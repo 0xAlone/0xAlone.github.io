@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Osama | Security Professional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- 1. CORE SETTINGS --- */
+        :root {
+            --primary: #ff1a1a;        /* Neon Red */
+            --primary-hover: #cc0000;
+            --bg-dark: #080808;        /* Deep Black */
+            --bg-panel: #0f0f0f;       /* Section Background */
+            --bg-card: #161616;        /* Card Background */
+            --text-white: #e6e6e6;
+            --text-gray: #a0a0a0;
+            --font-main: 'Segoe UI', Roboto, Helvetica, sans-serif;
+            --font-mono: 'Courier New', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- 2. LAYOUT & TYPOGRAPHY --- */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-left: 4px solid var(--primary);
+            padding-left: 15px;
+            color: #fff;
+        }
+
+        .red-text { color: var(--primary); }
+        
+        /* --- 3. MODERN NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(8, 8, 8, 0.85); /* More transparent */
+            backdrop-filter: blur(15px);     /* Stronger glass effect */
+            z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { 
+            font-size: 1.3rem; 
+            font-weight: 800; 
+            color: #fff; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+        }
+        .logo span { color: var(--primary); }
+        
+        .nav-right { display: flex; align-items: center; gap: 30px; }
+        .nav-links { display: flex; gap: 25px; }
+        
+        .nav-links a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: 0.3s;
+            position: relative;
+        }
+        .nav-links a:hover { color: var(--primary); }
+        
+        /* Modern CTA Button in Header */
+        .nav-cta {
+            background: var(--primary);
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            border: 1px solid var(--primary);
+        }
+        .nav-cta:hover {
+            background: transparent;
+            color: var(--primary);
+            box-shadow: 0 0 15px rgba(255, 26, 26, 0.3);
+        }
+
+        /* --- 4. HERO SECTION --- */
+        #home {
+            padding-top: 160px;
+            padding-bottom: 80px;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a0505 0%, var(--bg-dark) 70%);
+        }
+        
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            object-fit: cover;
+            margin-bottom: 25px;
+            box-shadow: 0 0 30px rgba(255, 26, 26, 0.2);
+        }
+
+        .hero-name { font-size: 3rem; font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
+        .hero-role { 
+            font-family: var(--font-mono); 
+            color: var(--primary); 
+            font-size: 1.2rem; 
+            margin-bottom: 20px; 
+            font-weight: bold;
+        }
+        
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+        .hero-meta span i { color: var(--primary); margin-right: 5px; }
+
+        .cta-group { margin-top: 20px; }
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            margin: 0 10px;
+            font-size: 0.9rem;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            border: 1px solid var(--primary);
+        }
+        .btn-primary:hover { background: transparent; color: var(--primary); }
+        .btn-outline {
+            border: 1px solid #444;
+            color: #fff;
+        }
+        .btn-outline:hover { border-color: #fff; }
+
+        /* --- 5. SUMMARY --- */
+        #summary { background: var(--bg-panel); padding: 60px 0; }
+        .summary-text { font-size: 1.1rem; max-width: 800px; color: #ccc; line-height: 1.8; }
+
+        /* --- 6. SKILLS & TOOLS (Clean, Text-Only) --- */
+        #tools { padding: 80px 0; }
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .tool-category h3 { font-size: 1.1rem; color: #fff; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        
+        .tool-badges { display: flex; flex-wrap: wrap; gap: 10px; }
+        .badge {
+            background: #222;
+            color: #ddd;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            border: 1px solid #333;
+            font-family: var(--font-main);
+            font-weight: 500;
+        }
+        /* No icon styling needed here */
+
+        /* --- 7. EXPERIENCE --- */
+        #experience { padding: 80px 0; background: var(--bg-panel); }
+        .timeline { border-left: 2px solid #333; margin-left: 10px; padding-left: 30px; }
+        .job-card { position: relative; margin-bottom: 50px; }
+        .job-card::before {
+            content: ''; position: absolute; left: -37px; top: 6px;
+            width: 12px; height: 12px; background: var(--primary); border-radius: 50%;
+        }
+        .job-header { margin-bottom: 10px; }
+        .job-title { font-size: 1.3rem; color: #fff; font-weight: bold; }
+        .job-company { color: var(--primary); font-size: 0.95rem; font-weight: 600; }
+        .job-date { color: #666; font-size: 0.85rem; display: block; margin-top: 2px; }
+        .job-desc li { color: #bbb; margin-bottom: 6px; font-size: 0.95rem; list-style: none; position: relative; padding-left: 15px; }
+        .job-desc li::before { content: '›'; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
+
+        /* --- 8. PROJECTS --- */
+        #projects { padding: 80px 0; }
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid #222;
+            padding: 25px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+        .project-card:hover { border-color: var(--primary); transform: translateY(-3px); }
+        .project-title { font-size: 1.1rem; font-weight: bold; color: #fff; margin-bottom: 5px; }
+        .project-tech { font-family: var(--font-mono); font-size: 0.8rem; color: var(--primary); margin-bottom: 15px; }
+        .project-desc { font-size: 0.9rem; color: #aaa; }
+
+        /* --- 9. EDUCATION & CERTS --- */
+        #education, #certs, #languages { padding: 60px 0; background: var(--bg-panel); }
+        #certs { background: var(--bg-dark); }
+        
+        .list-grid { display: grid; gap: 15px; }
+        .list-item {
+            background: var(--bg-card);
+            padding: 15px 20px;
+            border-left: 3px solid var(--primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .item-main { font-weight: bold; color: #e6e6e6; }
+        .item-sub { color: #888; font-size: 0.9rem; margin-top: 2px; }
+        .item-date { font-family: var(--font-mono); font-size: 0.85rem; color: #666; }
+
+        /* --- 10. LANGUAGES --- */
+        .lang-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center; }
+        .lang-card { background: var(--bg-card); padding: 15px; border-bottom: 2px solid var(--primary); }
+
+        /* --- 11. MODERN FOOTER (CONTACT SECTION) --- */
+        footer {
+            background: #000;
+            padding: 80px 0 40px;
+            border-top: 1px solid #222;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        .footer-brand h2 { font-size: 1.8rem; color: #fff; margin-bottom: 15px; text-transform: uppercase; }
+        .footer-brand p { color: var(--text-gray); font-size: 0.95rem; }
+        
+        .footer-heading { color: #fff; font-size: 1.1rem; margin-bottom: 20px; font-weight: bold; }
+        
+        .social-links { display: flex; gap: 15px; }
+        .social-btn {
+            width: 45px; height: 45px;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: #fff;
+            transition: 0.3s;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+        .social-btn:hover { background: var(--primary); border-color: var(--primary); transform: translateY(-3px); }
+
+        .contact-info p { color: #aaa; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .contact-info i { color: var(--primary); }
+        .contact-email { color: #fff; text-decoration: none; font-weight: 500; transition: 0.3s; }
+        .contact-email:hover { color: var(--primary); }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #1a1a1a;
+            color: #555;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-right { gap: 10px; }
+            .hero-meta { flex-direction: column; gap: 10px; }
+            .lang-grid { grid-template-columns: 1fr; }
+            .footer-grid { text-align: center; }
+            .social-links { justify-content: center; }
+            .contact-info p { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">Mohamed<span>Osama</span></div>
+            
+            <div class="nav-right">
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#tools">Skills</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#projects">Projects</a>
+                </div>
+                <a href="#contact" class="nav-cta">Let's Talk</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home">
+        <div class="container">
+            <img src="profile.png" alt="Mohamed Osama" class="profile-img">
+            
+            <h1 class="hero-name">Mohamed Osama</h1>
+            <div class="hero-role">Penetration Tester | Offensive Security </div>
+
+            <div class="hero-meta">
+                <span><i class="fas fa-map-marker-alt"></i> Asyut, Egypt</span>
+                <span><i class="fas fa-circle" style="font-size: 0.7rem;"></i> Open to Internships & Part-Time Roles</span>
+            </div>
+
+            <div class="cta-group">
+                <a href="#contact" class="btn btn-primary">Contact Me</a>
+               <!-- <a href="Mohamed_Soliman_CV.pdf" target="_blank" class="btn btn-outline">Download CV</a> -->
+            </div>
+        </div>
+    </section>
+
+    <section id="summary">
+        <div class="container">
+            <h2 class="section-title">Career Objective</h2>
+            <p class="summary-text">
+                Cybersecurity-focused IT student with hands-on experience in web application testing, network design, and secure software development. Strong foundation in CCNA networking and practical exposure to penetration testing methodologies, including OWASP Top 10 vulnerabilities. Actively engaged in structured bug bounty research to develop real-world offensive security skills. Seeking an internship or junior security role to contribute technical expertise, analytical thinking, and a commitment to professional growth in cybersecurity.
+            </p>
+        </div>
+    </section>
+
+    <section id="tools">
+        <div class="container">
+            <h2 class="section-title">Technical Arsenal</h2>
+            <div class="tools-grid">
+                
+                <div class="tool-category">
+                    <h3><i class="fas fa-shield-alt red-text"></i> Security Tools</h3>
+                    <div class="tool-badges">
+                        <span class="badge">Burp Suite</span>
+                        <span class="badge">Nmap</span>
+                        <span class="badge">Metasploit</span>
+                        <span class="badge">Wireshark</span>
+                        <span class="badge">OWASP ZAP</span>
+                        <span class="badge">John the Ripper</span>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <h3><i class="fas fa-desktop red-text"></i> Platforms & OS</h3>
+                    <div class="tool-badges">
+                        <span class="badge">Kali Linux</span>
+ <span class="badge">Windows Server</span>
+                        <span class="badge">HackerOne</span>
+                        <span class="badge">Intigriti</span>
+                        <span class="badge">PortSwigger Labs</span>
+                        <span class="badge">Cisco Packet Tracer</span>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <h3><i class="fas fa-code red-text"></i> Development</h3>
+                    <div class="tool-badges">
+                        <span class="badge">Python</span>
+                        <span class="badge">C#</span>
+                        <span class="badge">PHP</span>
+                        <span class="badge">Bash Scripting</span>
+                        <span class="badge">Flutter/Dart</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline">
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="job-title">Bug Hunter (Freelance)</div>
+                        <div class="job-company">HackerOne & Intigriti</div>
+                        <span class="job-date">Dec 2025 - Present</span>
+                    </div>
+                    <ul class="job-desc">
+                        <li>Identifying and reporting critical security vulnerabilities in real-world web applications.</li>
+                        <li>Executing comprehensive security testing across multiple attack surfaces.</li>
+                        <li>Utilizing reconnaissance and exploitation techniques aligned with industry standards.</li>
+                        <li>Producing professional vulnerability reports with actionable remediation steps.</li>
+                    </ul>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="job-title">Vulnerability Analyst Trainee</div>
+                        <div class="job-company">Digital Egypt Pioneers Initiative (DEPI)</div>
+                        <span class="job-date">Nov 2025 - Present</span>
+                    </div>
+                    <ul class="job-desc">
+                        <li>Executing advanced web application assessments using EWAPT methodology.</li>
+                        <li>Conducting network penetration testing including enumeration and exploitation.</li>
+                        <li>Analyzing Android security concepts for mobile application testing.</li>
+                        <li>Documenting vulnerability findings in standardized professional reports.</li>
+                    </ul>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="job-title">Ethical Hacking Trainee</div>
+                        <div class="job-company">National Telecommunication Institute (NTI)</div>
+                        <span class="job-date">Jan 2026 - Present</span>
+                    </div>
+                    <ul class="job-desc">
+                        <li>Applying CEH-aligned techniques for system scanning and exploitation.</li>
+                        <li>Validating security vulnerabilities in realistic lab environments.</li>
+                        <li>Demonstrating proficiency in post-exploitation and security reporting.</li>
+                    </ul>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="job-title">Network Security Trainee</div>
+                        <div class="job-company">National Telecommunication Institute (NTI)</div>
+                        <span class="job-date">Aug 2025 - Sep 2025</span>
+                    </div>
+                    <ul class="job-desc">
+                        <li>Configured and hardened network defenses based on CompTIA Security+ standards.</li>
+                        <li>Executed traffic analysis and exploitation using Burp Suite and Metasploit.</li>
+                        <li>Performed network discovery and hash cracking using Nmap and John the Ripper.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Key Projects</h2>
+            <div class="project-grid">
+
+                <div class="project-card">
+                    <div class="project-title">Secure Mobile Application</div>
+                    <div class="project-tech">Flutter | Firebase | Android Security</div>
+                    <p class="project-desc">Developed a functional mobile app with secure authentication and real-time database management, adhering to secure coding practices.</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">CEH Capstone Project</div>
+                    <div class="project-tech">Nmap | Metasploit | Reporting</div>
+                    <p class="project-desc">Conducted a full-scope penetration test. Executed network scanning, web vulnerability assessment, and delivered a professional remediation report.</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Educational Hypervisor</div>
+                    <div class="project-tech">Proxmox | PHP | Virtualization</div>
+                    <p class="project-desc">Built a virtualized platform with role-based access control. Managed backend development and server hosting to apply virtualization skills.</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">University Network Infrastructure</div>
+                    <div class="project-tech">Cisco Packet Tracer | ASA Firewall</div>
+                    <p class="project-desc">Designed an enterprise network for two campuses. Configured ASA firewalls, VPNs, NAT, and DMZ zones to validate security posture.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="list-grid">
+                <div class="list-item">
+                    <div>
+                        <div class="item-main">Bachelor of Technology - Information Technology</div>
+                        <div class="item-sub">Assiut International Technological University (AITU)</div>
+                    </div>
+                    <div class="item-date">2023 - 2027</div>
+                </div>
+                <div class="list-item">
+                    <div>
+                        <div class="item-main">High School Diploma - Information Technology</div>
+                        <div class="item-sub">Integrated Technical Education Cluster (ITEC) | Grade: Excellent</div>
+                    </div>
+                    <div class="item-date">2020 - 2023</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certs">
+        <div class="container">
+            <h2 class="section-title">Certifications & Training</h2>
+            <div class="list-grid">
+                <div class="list-item">
+                    <div>
+                        <div class="item-main">CCEP - Red Team Leaders</div>
+                        <div class="item-sub">Credential ID 5ee3aad1eb562a44</div>
+                    </div>
+                    <div class="item-date">Nov 2025</div>
+                </div>
+
+                <div class="list-item">
+                    <div>
+                        <div class="item-main">CCNA (Cisco Certified Network Associate)</div>
+                        <div class="item-sub">Cisco Networking Academy</div>
+                    </div>
+                    <div class="item-date">Sep 2025</div>
+                </div>
+                <div class="list-item">
+                    <div>
+                        <div class="item-main">Ethical Hacking (CEH Aligned)</div>
+                        <div class="item-sub">National Telecommunication Institute (NTI)</div>
+                    </div>
+                    <div class="item-date">In Progress</div>
+                </div>
+                <div class="list-item">
+                    <div>
+                        <div class="item-main">Network Security (Security+ Aligned)</div>
+                        <div class="item-sub">National Telecommunication Institute (NTI)</div>
+                    </div>
+                    <div class="item-date">Oct 2025</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="languages">
+        <div class="container">
+            <h2 class="section-title">Languages</h2>
+            <div class="lang-grid">
+                <div class="lang-card">
+                    <div style="color:#fff; font-weight:bold;">Arabic</div>
+                    <div style="color:#888; font-size:0.9rem;">Native</div>
+                </div>
+                <div class="lang-card">
+                    <div style="color:#fff; font-weight:bold;">English</div>
+                    <div style="color:#888; font-size:0.9rem;">Professional</div>
+                </div>
+                <div class="lang-card">
+                    <div style="color:#fff; font-weight:bold;">German</div>
+                    <div style="color:#888; font-size:0.9rem;">Elementary</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                
+                <div class="footer-brand">
+                    <h2>Mohamed Osama</h2>
+                    <p>Securing digital infrastructures through offensive security strategies and robust network defense.</p>
+                </div>
+
+                <div>
+                    <div class="footer-heading">Connect</div>
+                    <div class="social-links">
+                        <a href="https://github.com/0xAlone" target="_blank" class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/mohamed-osama-soliman" target="_blank" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-info">
+                    <div class="footer-heading">Contact Details</div>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:mohammed.osama.ibrahim@gmail.com" class="contact-email">Email</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Asyut, Egypt</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Mohamed Osama. Engineered for Security.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
